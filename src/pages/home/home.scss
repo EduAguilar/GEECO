@@ -1,3 +1,36 @@
 page-home {
+    .auth-home {
+        background-image: url("../../assets/img/home.png");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position-y: 50%;
+      
+
+      .styleSlides {
+        margin-top: 40%;
+        font-family: "Times New Roman", Times, red serifs;
+        text-align: center;
+        color:#000;
+        padding: 0 16px;
+        line-height: 1;
+        font-weight: bold;
+        text-shadow: 0 0px 20px  #FFF;
+        }
+    }
+    .app-icon {
+      background: url('../../assets/img/logo.png') center;
+      background-size: 70% 70%;
+      background-repeat: no-repeat;
+     // position: relative;
+      height: 40%;
+      margin-left: 3%;
+      width: 100%;
+    }
+
+    .styleinputs{
+      opacity:0.5;
+      //height:100%;
+      font-style: bold;
+    }    
 
 }

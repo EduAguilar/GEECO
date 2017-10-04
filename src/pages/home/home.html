@@ -1,14 +1,50 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="auth-home">
+  <div class="app-icon"></div>
+  <ion-list>
+    <form>
+      <ion-item class="styleinputs">
+        <ion-label floating>Email</ion-label>
+        <ion-input 
+          [(ngModel)]="user.email" 
+          name="email" 
+          type="text" 
+          autocapitalize="off" 
+          required
+        >
+        </ion-input>
+      </ion-item>
+     
+      <ion-item class="styleinputs">
+        <ion-label floating>Contraseña</ion-label>
+        <ion-input 
+          [(ngModel)]="user.password" 
+          name="password" 
+          type="password" 
+          required
+        >
+        </ion-input>
+      </ion-item>
+      <div padding>
+        <button 
+            ion-button 
+            (click)="login()" 
+            type="submit" 
+            color="primary" 
+            block
+        >
+          Login
+        </button> 
+    
+        <button 
+          ion-button 
+          (click)="signin()" 
+          type="submit" 
+          color="secondary" 
+          block
+        >
+          Dar de alta
+        </button>
+      </div>
+    </form>
+  </ion-list>
 </ion-content>
