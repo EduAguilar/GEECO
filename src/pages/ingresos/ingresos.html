@@ -1,18 +1,31 @@
-<!--
-  Generated template for the IngresosPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Ingresos</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+<ion-header hidden>
+    <ion-navbar>
+      <ion-title>Ingresos</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+     
+    <ion-fab right bottom colo>
+      <button ion-fab color="secondary" (tap)="nuevoIngreso()">
+      <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+  
+    <ion-list>
+        <ion-item *ngFor="let ingreso of ingreso" color="secondary">
+          <ion-thumbnail item-left>
+            <img [src]="ingreso.foto">
+          </ion-thumbnail>
+          <p>Fecha: {{ ingreso.fecha }}</p>
+          <p>Hora: {{ ingreso.hora }}</p>
+          <p>Importe: ${{ ingreso.importe }}</p>
+          <p>Tipo: {{ ingreso.tipo }}</p>
+          <p>Categoria: {{ ingreso.categoria }}</p> 
+          <p>Nota: {{ ingreso.nota }}</p>
+        </ion-item>
+      </ion-list>
+  
+      <button ion-button block (click)="cerrarSesion()">Cerrar Sesión</button>
+  
+  </ion-content>

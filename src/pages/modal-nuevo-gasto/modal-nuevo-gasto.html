@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Nuevo Gasto</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cerrarModal()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+  
+<ion-content padding>
+  <ion-card> 
+    <ion-card-content>
+      <form (ngSubmit)="guardarGasto()">
+        <button ion-item>
+          <ion-label floating><b>Importe</b></ion-label>
+          <ion-input type="number" [(ngModel)]="importe" name="importe"></ion-input>
+        </button>
+        
+        <ion-list>
+          
+          <ion-item>
+            <ion-label>Tipo</ion-label>
+            <ion-select [(ngModel)]="tipo" name="tipo">
+              <ion-option value="Efectivo">Efectivo</ion-option>
+              <ion-option value="Banco/Debito">Banco/Debito</ion-option>  
+            </ion-select>
+          </ion-item>
+  
+          <ion-item>        
+            <ion-label>Categoria</ion-label>
+            <ion-select [(ngModel)]="categoria" name="categoria">
+              <ion-option value="Educación">Educación</ion-option> 
+              <ion-option value="Automovil">Automovil</ion-option>
+              <ion-option value="Facturas">Facturas</ion-option>
+              <ion-option value="Ropa">Ropa</ion-option>        
+              <ion-option value="Entretenimiento">Entretenimiento</ion-option>
+              <ion-option value="Comida">Comida</ion-option>
+              <ion-option value="Gasolina">Gasolina</ion-option>
+              <ion-option value="Salud">Salud</ion-option>
+            </ion-select>
+          </ion-item>
+  
+          <ion-list>
+            <ion-item>
+              <ion-label>Fecha</ion-label>
+              <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="myDateFecha" name="myDateFecha"></ion-datetime>
+            </ion-item>       
+            <ion-item>
+              <ion-label>Hora</ion-label>
+              <ion-datetime  displayFormat="h:mm A" [(ngModel)]="myDateHora" name="myDateHora"></ion-datetime>
+            </ion-item>
+          </ion-list>    
+      
+          <ion-item>
+            <img [src]="foto" *ngIf="foto" />
+            <button ion-button icon-left full type="button" (tap)="sacarFoto()">
+              Foto&nbsp;&nbsp;          
+              <ion-icon name="camera"></ion-icon>
+            </button>
+          </ion-item>
+      
+          <hr/>
+  
+          <ion-item>
+            <ion-label>Añadir Nota</ion-label>
+          </ion-item>
+          <ion-textarea [(ngModel)]="nota" name="nota"></ion-textarea>
+  
+        </ion-list>
+
+        <button ion-button type="submit" block>Guardar Sitio</button>
+      </form>     
+    </ion-card-content>
+  </ion-card>
+</ion-content>

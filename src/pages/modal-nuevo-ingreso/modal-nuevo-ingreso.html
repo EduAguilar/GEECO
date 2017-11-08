@@ -1,0 +1,73 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Nuevo Ingreso</ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="cerrarModal()">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+    
+  <ion-content padding>
+    <ion-card> 
+      <ion-card-content>
+        <form (ngSubmit)="guardarIngreso()">
+          <button ion-item>
+            <ion-label floating><b>Importe</b></ion-label>
+            <ion-input type="number" [(ngModel)]="importe" name="importe"></ion-input>
+          </button>
+          
+          <ion-list>
+            
+            <ion-item>
+              <ion-label>Tipo</ion-label>
+              <ion-select [(ngModel)]="tipo" name="tipo">
+                <ion-option value="Efectivo">Efectivo</ion-option>
+                <ion-option value="Banco/Debito">Banco/Debito</ion-option>  
+              </ion-select>
+            </ion-item>
+    
+            <ion-item>        
+              <ion-label>Categoria</ion-label>
+              <ion-select [(ngModel)]="categoria" name="categoria">
+                <ion-option value="sueldo">Sueldo</ion-option>
+                <ion-option value="ahorro">Ahorros</ion-option>
+                <ion-option value="deposito">Deposito</ion-option>        
+                <ion-option value="Otros">Otros</ion-option>      
+              </ion-select>
+            </ion-item>
+    
+            <ion-list>
+              <ion-item>
+                <ion-label>Fecha</ion-label>
+                <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="myDateFecha" name="myDateFecha"></ion-datetime>
+              </ion-item>       
+              <ion-item>
+                <ion-label>Hora</ion-label>
+                <ion-datetime  displayFormat="h:mm A" [(ngModel)]="myDateHora" name="myDateHora"></ion-datetime>
+              </ion-item>
+            </ion-list>    
+        
+            <ion-item>
+              <img [src]="foto" *ngIf="foto" />
+              <button ion-button icon-left full type="button" (tap)="sacarFoto()">
+                Foto&nbsp;&nbsp;          
+                <ion-icon name="camera"></ion-icon>
+              </button>
+            </ion-item>
+        
+            <hr/>
+    
+            <ion-item>
+              <ion-label>Añadir Nota</ion-label>
+            </ion-item>
+            <ion-textarea [(ngModel)]="nota" name="nota"></ion-textarea>
+    
+          </ion-list>
+  
+          <button ion-button type="submit" block>Guardar Sitio</button>
+        </form>     
+      </ion-card-content>
+    </ion-card>
+  </ion-content>

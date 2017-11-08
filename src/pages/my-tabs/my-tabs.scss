@@ -1,3 +1,19 @@
-page-my-tabs {
+page-tabs{
+    #tab-t1-0[aria-selected=false] {
+        background-color: #488aff;
+        color: #000;
+    }
+    #tab-t1-1[aria-selected=true] {
+        background-color: darkgrey;
+        color: #000;
+    }
+    #tab-t1-2[aria-selected=true] {
+        background-color: #32db64;
+        color: #000;
+    }
+    #tab-t1-3[aria-selected=true] {
+        background-color: red;
+        color: #000;
+    }
 
 }

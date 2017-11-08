@@ -1,18 +1,36 @@
-<!--
-  Generated template for the RegistroPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
+<ion-header hidden>
   <ion-navbar>
     <ion-title>Registro</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content padding title="Registro">
+    <ion-list>
+        <ion-item *ngFor="let ingreso of ingreso" color="secondary">
+          <ion-thumbnail item-left>
+            <p>Ingreso</p>
+            <img [src]="ingreso.foto">
+          </ion-thumbnail>
+          <p>Fecha: {{ ingreso.fecha }}</p>
+          <p>Hora: {{ ingreso.hora }}</p>
+          <p>Importe: ${{ ingreso.importe }}</p>
+          <p>Tipo: {{ ingreso.tipo }}</p>
+          <p>Categoria: {{ ingreso.categoria }}</p> 
+          <p>Nota: {{ ingreso.nota }}</p>
+        </ion-item>
+     
+          <ion-item *ngFor="let gasto of gasto" color="danger">
+            <ion-thumbnail item-left>
+                <p>Gasto</p>
+              <img [src]="gasto.foto">
+            </ion-thumbnail>
+            <p>Fecha: {{ gasto.fecha }}</p>
+            <p>Hora: {{ gasto.hora }}</p>
+            <p>Importe: ${{ gasto.importe }}</p>
+            <p>Tipo: {{ gasto.tipo }}</p>
+            <p>Categoria: {{ gasto.categoria }}</p> 
+            <p>Nota: {{ gasto.nota }}</p>
+          </ion-item>
+      </ion-list>
 </ion-content>

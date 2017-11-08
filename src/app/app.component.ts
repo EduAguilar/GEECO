@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
+import { DbProvider } from '../providers/db/db';
 
 @Component({
   templateUrl: 'app.html'
@@ -11,8 +11,8 @@ export class MyApp {
   rootPage:any = 'HomePage';
 
   constructor(
-    platform: Platform, 
-    statusBar: StatusBar,
+    public db: DbProvider,
+    platform: Platform,
     splashScreen: SplashScreen,
     private auth: AuthProvider) {
     platform.ready().then(() => {
@@ -27,10 +27,9 @@ export class MyApp {
           this.rootPage = 'HomePage';
         }
       });
-
-      statusBar.styleDefault();
       splashScreen.hide();
+      this.db.openDb()
+      .then(() => this.db.createTables())
     });
   }
 }
-

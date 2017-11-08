@@ -11,6 +11,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthProvider } from '../providers/auth/auth';
 
+import {ModalCuentasPages} from '../pages/cuentas/cuentas';
+import { Camera } from '@ionic-native/camera';
+import { DbProvider } from '../providers/db/db';
+import { SQLite } from '@ionic-native/sqlite';
+
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDUpnhI7SJTOXVeWuJxZdZrRYr4mdJ4fMk",
   authDomain: "geeco-2344c.firebaseapp.com",
@@ -24,6 +30,7 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     MyApp,
+    ModalCuentasPages
   ],
   imports: [
     BrowserModule,
@@ -34,13 +41,17 @@ export const firebaseConfig = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    ModalCuentasPages
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    Camera,
+    DbProvider,
+    SQLite
   ]
 })
 export class AppModule {}
