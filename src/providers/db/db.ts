@@ -51,4 +51,14 @@ export class DbProvider {
     return this.db.executeSql(sql,{});
   }
 
+  public borrarIngreso(id){
+    let sql = "DELETE FROM ingreso WHERE id= ? ";
+    return this.db.executeSql(sql,[id]);
+ }
+
+ public borrarGasto(id){
+  let sql = "DELETE FROM gasto WHERE id= ? ";
+  return this.db.executeSql(sql,[id]);
+}
+
 }
