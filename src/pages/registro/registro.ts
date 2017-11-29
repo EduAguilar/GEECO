@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DbProvider } from '../../providers/db/db';
 import { AlertController } from 'ionic-angular';
 
@@ -11,19 +11,25 @@ import { AlertController } from 'ionic-angular';
 export class RegistroPage {
   ingreso: any;
   gasto: any;
+  mydato: any;
+  gastototal: any;
   //edit : boolean = false;
 
   constructor(public navCtrl: NavController,
      public navParams: NavParams,
      public db : DbProvider,
-     public alertCtrl: AlertController) {
-  }
+     public alertCtrl: AlertController,
+     public modalCtrl : ModalController    
+    ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegistroPage');
   }
 
   ionViewDidEnter(){
+
+    this.gastototal=this.db.sumarGastos
+    
     this.db.getIngreso().then((res)=>{
    this.ingreso = [];
    for(var i = 0; i < res.rows.length; i++){
@@ -56,6 +62,26 @@ export class RegistroPage {
     } 
     },(err)=>{ /* alert('error al sacar de la bd'+err) */ })   
   }
+
+  sumargastos(){
+    this.db.sumarGastos().then((res)=>{
+      this.gastototal = [];
+    
+    },(err)=>{ /* alert('error al sacar de la bd'+err) */ })  
+   }
+
+  muestraDetalle(dato){
+    let modalDetalle = this.modalCtrl.create( 'ModalDetallesPage', dato );
+    modalDetalle.present();
+    this.obtenerdato(dato);
+  }
+
+  obtenerdato(dato){
+    this.mydato=dato
+  }
+
+
+
 
 
   borrarIngreso(id){

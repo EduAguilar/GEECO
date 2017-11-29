@@ -7,49 +7,57 @@
 
 <ion-content padding title="Registro">
     <ion-list>
-        <ion-item-sliding #item *ngFor="let ingreso of ingreso" >
-          <ion-item color="secondary">
+        <ion-item-sliding #item *ngFor="let ingreso of ingreso">
+          <ion-item color="secondary" (tap)="muestraDetalle(ingreso)" >
           <ion-thumbnail item-left>
             <p>Ingreso</p>
-            <img [src]="ingreso.foto">
+            <img [src]="ingreso.foto" *ngIf="ingreso.foto" />
           </ion-thumbnail>
-          <p>Fecha: {{ ingreso.fecha }}</p>
-          <p>Hora: {{ ingreso.hora }}</p>
           <p>Importe: ${{ ingreso.importe }}</p>
+          <p>Fecha: {{ ingreso.fecha }}</p>
+<!--
+          <p>Hora: {{ ingreso.hora }}</p>
           <p>Tipo: {{ ingreso.tipo }}</p>
           <p>Categoria: {{ ingreso.categoria }}</p> 
           <p>Nota: {{ ingreso.nota }}</p>
-          </ion-item>
+-->    
+        </ion-item>
 
           <ion-item-options side="right">
             <button ion-button  color="danger" (click)="borrarIngreso(ingreso.id)"><ion-icon name="trash"></ion-icon>
               Borrar
             </button>
-            <button ion-button  color="darkgrey" (click)="editarIngreso(ingreso.id)"><ion-icon name="md-create"></ion-icon>
-              Editar
-            </button>
+
           </ion-item-options> 
         </ion-item-sliding>
+
+        <ion-item-sliding>
+          <p>Gasto Total</p>
+
+        <p>Importe: ${{gastototal}}</p>
+      
+        </ion-item-sliding>
+
+
      
-        <ion-item-sliding #item *ngFor="let gasto of gasto" >
-          <ion-item color="danger">
+        <ion-item-sliding #item *ngFor="let gasto of gasto">
+          <ion-item color="danger" (click)="muestraDetalle(gasto)" >
           <ion-thumbnail item-left>
             <p>Gasto</p>
             <img [src]="gasto.foto">
           </ion-thumbnail>
-          <p>Fecha: {{ gasto.fecha }}</p>
-          <p>Hora: {{ gasto.hora }}</p>
           <p>Importe: ${{ gasto.importe }}</p>
+          <p>Fecha: {{ gasto.fecha }}</p>
+<!--          
+          <p>Hora: {{ gasto.hora }}</p>
           <p>Tipo: {{ gasto.tipo }}</p>
           <p>Categoria: {{ gasto.categoria }}</p> 
           <p>Nota: {{ gasto.nota }}</p>
-          </ion-item>
+-->
+        </ion-item>
           <ion-item-options side="right">
             <button ion-button  color="danger" (click)="borrarGasto(gasto.id)"><ion-icon name="trash"></ion-icon>
               Borrar
-            </button>
-            <button ion-button  color="darkgrey" (click)="editarGasto(gasto.id)"><ion-icon name="md-create"></ion-icon>
-              Editar
             </button>
           </ion-item-options>         
           </ion-item-sliding>

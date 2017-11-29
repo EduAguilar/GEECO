@@ -15,7 +15,8 @@ export class ModalNuevoGastoPage {
   categoria: string = '';
   nota: any = '';
   foto: any = '';
- 
+  gastototal: any;
+  gastototal1: any;
   myDateFecha= moment().format('YYYY MMMM Do ');//para poder tener la fecha y hora correcta del momento y uso horario local
   myDateHora = moment().format('h:mm A');//para poder tener la fecha y hora correcta del momento y uso horario local
   /*Dato informativo:
@@ -63,13 +64,21 @@ export class ModalNuevoGastoPage {
       nota: this.nota,
       foto: this.foto
     }
+    
     this.db.cargarGasto(gasto).then((res)=>{
-      this.cerrarModal();     
+      this.cerrarModal();  
+      this.gastototal=this.db.sumarGastos   
      //alert('se ha introducido correctamente en la bd');
     },(err)=>{ /* alert('error al meter en la bd'+err) */ }) 
 }
 
 cerrarModal() {
   this.viewCtrl.dismiss();
+}
+
+sumargastos(){
+ 
+this.gastototal=this.db.sumarGastos
+
 }
 }

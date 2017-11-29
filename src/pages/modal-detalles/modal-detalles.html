@@ -1,0 +1,104 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detalles</ion-title>
+
+    <ion-buttons start>
+      <button ion-button (click)="cerrarModal()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>    
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card *ngIf="!edit">
+      <img [src]="dato.foto" *ngIf="dato.foto" />
+      <ion-card-content>
+        <ion-item text-wrap>
+        <p>Importe: ${{ dato.importe }}</p>
+        <p>Fecha: {{ dato.fecha }}</p>
+        <p>Hora: {{ dato.hora }}</p>
+        <p>Tipo: {{ dato.tipo }}</p>
+        <p>Categoria: {{ dato.categoria }}</p> 
+        <p>Nota: {{ dato.nota }}</p>
+        </ion-item>
+      </ion-card-content>
+
+      <ion-row> 
+        <ion-col text-center>
+            <button ion-button icon-left clear small (click)="editar(dato)">
+            <ion-icon name="ios-create"></ion-icon>
+            <div>Editar</div>
+          </button> 
+        </ion-col> 
+      </ion-row>
+    </ion-card>
+
+
+        <ion-card *ngIf="edit"> 
+            <ion-card-content>
+              <form (ngSubmit)="guardarCambios()">
+                <button ion-item>
+                  <ion-label floating><b>Importe</b></ion-label>
+                  <ion-input type="number" [(ngModel)]="dato.importe" name="importe"></ion-input>
+                </button>
+                
+                <ion-list>
+                  
+                  <ion-item>
+                    <ion-label>Tipo</ion-label>
+                    <ion-select [(ngModel)]="dato.tipo" name="tipo">
+                      <ion-option value="Efectivo">Efectivo</ion-option>
+                      <ion-option value="Banco/Debito">Banco/Debito</ion-option>  
+                    </ion-select>
+                  </ion-item>
+          
+                  <ion-item>        
+                    <ion-label>Categoria</ion-label>
+                    <ion-select [(ngModel)]="dato.categoria" name="categoria">
+                      <ion-option value="sueldo">Sueldo</ion-option>
+                      <ion-option value="ahorro">Ahorros</ion-option>
+                      <ion-option value="deposito">Deposito</ion-option>        
+                      <ion-option value="Otros">Otros</ion-option>      
+                    </ion-select>
+                  </ion-item>
+          
+                  <ion-list>
+                    <ion-item>
+                      <ion-label>Fecha</ion-label>
+                      <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="dato.myDateFecha" name="myDateFecha"></ion-datetime>
+                    </ion-item>       
+                    <ion-item>
+                      <ion-label>Hora</ion-label>
+                      <ion-datetime  displayFormat="h:mm A" [(ngModel)]="dato.myDateHora" name="myDateHora"></ion-datetime>
+                    </ion-item>
+                  </ion-list>    
+              
+                  <ion-item>
+                    <img [src]="dato.foto" *ngIf="dato.foto" />
+                    <button ion-button icon-left full type="button" (tap)="sacarFoto()">
+                      Foto&nbsp;&nbsp;          
+                      <ion-icon name="camera"></ion-icon>
+                    </button>
+                  </ion-item>
+              
+                  <hr/>
+          
+                  <ion-item>
+                    <ion-label>Añadir Nota</ion-label>
+                  </ion-item>
+                  <ion-textarea [(ngModel)]="dato.nota" name="nota"></ion-textarea>
+          
+                </ion-list>
+        
+                <button ion-button type="submit" block>Actualizar</button>
+              </form>     
+            </ion-card-content>
+
+
+          </ion-card>          
+
+</ion-content>

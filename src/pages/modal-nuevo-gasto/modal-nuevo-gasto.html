@@ -56,7 +56,7 @@
           <ion-item>
             <img [src]="foto" *ngIf="foto" />
             <button ion-button icon-left full type="button" (tap)="sacarFoto()">
-              Foto&nbsp;&nbsp;          
+              Foto&nbsp;&nbsp; 
               <ion-icon name="camera"></ion-icon>
             </button>
           </ion-item>
@@ -67,10 +67,11 @@
             <ion-label>Añadir Nota</ion-label>
           </ion-item>
           <ion-textarea [(ngModel)]="nota" name="nota"></ion-textarea>
-  
+          
         </ion-list>
 
-        <button ion-button type="submit" block>Guardar Sitio</button>
+        <button ion-button type="submit" block>Guardar</button>
+       
       </form>     
     </ion-card-content>
   </ion-card>
